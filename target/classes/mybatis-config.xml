@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+    <settings>
+        <!-- 开启自动驼峰命名规则映射 -->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
+
+    <typeAliases>
+        <package name="com.kuang.pojo"/>
+    </typeAliases>
+    <mappers>
+        <mapper resource="com/kuang/dao/BookMapper.xml"/>
+        <mapper resource="com/kuang/dao/OrderMapper.xml"/>
+        <mapper resource="com/kuang/dao/ProductMapper.xml"/>
+        <mapper resource="com/kuang/dao/UserMapper.xml"/>
+        <mapper resource="com/kuang/dao/CartMapper.xml"/>
+        <mapper resource="com/kuang/dao/PaymentMapper.xml"/>
+        <mapper resource="com/kuang/dao/OrderDetailMapper.xml"/>
+
+
+
+
+    </mappers>
+
+</configuration>

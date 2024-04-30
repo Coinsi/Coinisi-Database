@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kuang.dao.PaymentMapper">
+
+    <!--增加一个Payment-->
+    <insert id="addPayment" parameterType="Payment">
+        insert into online_shop.payment(order_id,method,STATUS,payment_time)
+        values (#{orderId}, #{method}, #{status},#{paymentTime})
+    </insert>
+
+    <!--根据id删除一个Payment-->
+    <delete id="deletePaymentById" parameterType="int">
+        delete from online_shop.payment where id=#{id}
+    </delete>
+
+    <!--更新Payment-->
+    <update id="updatePayment" parameterType="Payment">
+        update online_shop.payment
+        set order_id = #{orderId},method = #{method},STATUS = #{status},payment_time=#{paymentTime}
+        where id = #{id}
+    </update>
+
+    <!--根据id查询,返回一个Payment-->
+    <select id="queryPaymentById" resultType="Payment">
+        select * from online_shop.payment
+        where id = #{id}
+    </select>
+
+    <!--查询全部Payment-->
+    <select id="queryAllPayment" resultType="Payment">
+        SELECT * from online_shop.payment
+    </select>
+
+</mapper>

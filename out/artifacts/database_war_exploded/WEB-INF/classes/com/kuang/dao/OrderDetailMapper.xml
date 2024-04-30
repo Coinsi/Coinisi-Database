@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kuang.dao.OrderDetailMapper">
+
+    <!--增加一个OrderDetail-->
+    <insert id="addOrderDetail" parameterType="OrderDetail">
+        insert into online_shop.orderdetail(order_id,product_id,quantity,price)
+        values (#{orderId}, #{productId}, #{quantity},#{price})
+    </insert>
+
+    <!--根据id删除一个OrderDetail-->
+    <delete id="deleteOrderDetailById" parameterType="int">
+        delete from online_shop.orderdetail where order_id=#{orderId}
+    </delete>
+
+    <!--更新OrderDetail-->
+    <update id="updateOrderDetail" parameterType="OrderDetail">
+        update online_shop.orderdetail
+        set product_id = #{productId},quantity = #{quantity},price = #{price}
+        where order_id = #{orderId}
+    </update>
+
+    <!--根据id查询,返回一个OrderDetail-->
+    <select id="queryOrderDetailById" resultType="OrderDetail">
+        select * from online_shop.orderdetail
+        where order_id= #{orderId}
+    </select>
+
+    <!--查询全部OrderDetail-->
+    <select id="queryAllOrderDetail" resultType="OrderDetail">
+        SELECT * from online_shop.orderdetail
+    </select>
+
+</mapper>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans.xsd
+   http://www.springframework.org/schema/context
+   http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- 扫描service相关的bean -->
+    <context:component-scan base-package="com.kuang.service" />
+
+    <!--BookServiceImpl注入到IOC容器中-->
+    <bean id="BookServiceImpl" class="com.kuang.service.BookServiceImpl">
+        <property name="bookMapper" ref="bookMapper"/>
+    </bean>
+
+    <!--OrderServiceImpl注入到IOC容器中-->
+    <bean id="OrderServiceImpl" class="com.kuang.service.OrderServiceImpl">
+        <property name="orderMapper" ref="orderMapper"/>
+    </bean>
+
+    <!--ProductServiceImpl注入到IOC容器中-->
+    <bean id="ProductServiceImpl" class="com.kuang.service.ProductServiceImpl">
+        <property name="productMapper" ref="productMapper"/>
+    </bean>
+
+    <!--UserServiceImpl注入到IOC容器中-->
+    <bean id="UserServiceImpl" class="com.kuang.service.UserServiceImpl">
+        <property name="userMapper" ref="userMapper"/>
+    </bean>
+
+    <bean id="CartServiceImpl" class="com.kuang.service.CartServiceImpl">
+        <property name="cartMapper" ref="cartMapper"/>
+    </bean>
+
+    <bean id="OrderDetailServiceImpl" class="com.kuang.service.OrderDetailServiceImpl">
+        <property name="orderDetailMapper" ref="orderDetailMapper"/>
+    </bean>
+
+    <bean id="PaymentServiceImpl" class="com.kuang.service.PaymentServiceImpl">
+        <property name="paymentMapper" ref="paymentMapper"/>
+    </bean>
+<!--   <bean id="" class="" init-method="" destroy-method=""></bean>-->
+
+    <!-- 配置事务管理器 -->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <!-- 注入数据库连接池 -->
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+
+
+
+
+
+
+</beans>

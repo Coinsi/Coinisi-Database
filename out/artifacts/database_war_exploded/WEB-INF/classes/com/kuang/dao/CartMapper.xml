@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kuang.dao.CartMapper">
+
+
+    <insert id="addCart" parameterType="Books">
+        insert into online_shop.cart(user_id,product_id,quantity)
+        values (#{useID}, #{productId}, #{quantity})
+    </insert>
+
+    <delete id="deleteCartById" parameterType="int">
+        delete from  online_shop.cart where id=#{id}
+    </delete>
+
+
+    <!--根据id查询,返回一个Book-->
+    <select id="queryCartById" resultType="Books">
+        select * from online_shop.cart
+        where id = #{id}
+    </select>
+
+    <!--查询全部Book-->
+    <select id="queryAllCart" resultType="Cart">
+        SELECT * from online_shop.cart
+    </select>
+
+</mapper>
